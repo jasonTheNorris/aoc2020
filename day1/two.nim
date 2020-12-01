@@ -1,7 +1,4 @@
-import logging, os, sequtils, strutils
-
-let logger = newConsoleLogger()
-addHandler(logger)
+import os, sequtils, strutils
 
 let inputFilename = commandLineParams()[0]
 let entries = map(split(readFile(inputFilename), '\n'), parseInt)
