@@ -1,0 +1,24 @@
+#! /bin/bash
+
+getopts ":e" flag
+
+input_file="input.txt"
+day=$1
+exercise=$2
+
+if [ $flag = "e" ]; then
+  input_file="example-input.txt"
+  day=$2
+  exercise=$3
+fi
+
+if [ -z $day ] || [ -z $exercise ]; then
+  echo "U DUMB: ./run [-e] <day> <exercise>"
+  exit 1
+fi
+
+[ $exercise = '1' ] && exercise="one" || exercise="two"
+
+dir=./day$day
+
+nim c -r $dir/$exercise.nim $dir/$input_file
